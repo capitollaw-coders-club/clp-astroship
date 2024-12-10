@@ -87,4 +87,6 @@ export default defineConfig({
       },
     },
   },
+  site: 'https://capitollaw-coders-club.github.io',
+  base: '/clp-astrowind',
 });
