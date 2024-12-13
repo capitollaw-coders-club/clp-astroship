@@ -98,7 +98,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind', variant: 'primary', target: '_blank' }],
+  actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind',variant: 'primary', target: '_blank' }],
 };
 
 export const footerData = {
