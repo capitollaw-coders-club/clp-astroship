@@ -3,100 +3,44 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Home',
-      href: getPermalink('/services')
+      text: 'About us',
+      href: getPermalink('/about-us'),
     },
     {
-      text: 'Pages',
+      text: 'Practice Areas',
       links: [
         {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
+          text: 'General Counsel Services',
+          href: getPermalink('/general-counsel-services'),
+        },
+
+        {
+          text: 'Corporate Law',
+          href: getPermalink('/corparate-law'),
+        },
+      
+        {
+          text: 'Business Litigation',
+          href: getPermalink('/business-litigation'),
         },
         {
-          text: 'Services',
-          href: getPermalink('/services'),
+          text: 'Business Immigration Law',
+          href: getPermalink('/business-imigration-law'),
         },
         {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
+          text: 'Immigration Law',
+          href: getPermalink('/imigration-law'),
         },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      ]
     },
     {
-      text: 'Landing',
-      links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
-      ],
+      text: 'Our Team',
+      href: getPermalink('/team'),
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
-    },
-    {
-      text: 'Widgets',
-      href: '#',
-    },
+      text: 'Our Locations',
+      href: getPermalink('/locations'),
+    },  
   ],
   actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind',variant: 'primary', target: '_blank' }],
 };
