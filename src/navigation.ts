@@ -3,7 +3,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'About us',
+      text: 'About Us',
       href: getPermalink('/about-us'),
     },
     {
@@ -41,8 +41,12 @@ export const headerData = {
       text: 'Our Locations',
       href: getPermalink('/locations'),
     },  
+    {
+      text: 'Contact Us',
+      href: getPermalink('/locations'),
+    },
   ],
-  actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind',variant: 'primary', target: '_blank' }],
+  //actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind',variant: 'primary', target: '_blank' }],
 };
 
 export const footerData = {
