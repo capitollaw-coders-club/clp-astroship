@@ -1,0 +1,37 @@
+---
+import { I18NConfig } from 'astrowind:config';
+
+interface Props {
+  i18n: I18NConfig; // Pass the I18NConfig object.
+  currentLang: string; // Pass the current language code (e.g., "en").
+}
+
+// Destructure props
+const { i18n, currentLang } = Astro.props;
+const { languages, defaultLanguage } = i18n;
+
+// Function to handle language switching
+const handleLangChange = (event: Event) => {
+  const selectedLang = (event.target as HTMLSelectElement).value;
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('language', selectedLang); // Save language preference
+    window.location.href = `/${selectedLang}`; // Redirect to the selected language's route
+  }
+};
+---
+
+<div class="relative inline-block">
+  <select
+    class="p-2 border rounded-lg text-sm focus:outline-none focus:ring"
+    aria-label="Language Selector"
+    value={currentLang}
+    onChange={handleLangChange}
+  >
+    {Object.keys(languages).map((lang) => (
+      <option value={lang} key={lang}>
+        {languages[lang].language.toUpperCase()} {/* Display language in uppercase */}
+      </option>
+    ))}
+  </select>
+</div>
