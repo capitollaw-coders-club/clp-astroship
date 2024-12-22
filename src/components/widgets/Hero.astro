@@ -19,77 +19,78 @@ const {
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
-    <!-- Background layer -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <slot name="bg">
-        {bg ? <Fragment set:html={bg} /> : null}
-      </slot>
+  <!-- Background slot container -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <slot name="bg">
+      {bg ? <Fragment set:html={bg} /> : null}
+    </slot>
+  </div>
+
+  <!-- Main image container -->
+  <div class="h-[76px] w-full hidden md:block"></div>
+  <div class="relative w-full h-[50vh] md:h-[80vh]">
+    
+    <div class="absolute inset-0">
+      <!-- Image container -->
+      {
+        image && (
+          <div class="relative w-full h-full">
+            {typeof image === 'string' ? (
+              <Fragment set:html={image} />
+            ) : (
+              <Image
+                class="w-full h-full object-cover"
+                widths={[360, 640, 768, 1024, 1280, 1920, 2400, 3200]}
+                sizes="(min-width: 3200px) 3200px, (min-width: 2400px) 2400px, (min-width: 1920px) 1920px, (min-width: 1280px) 1280px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 640px) 640px, 360px"
+                loading="eager"
+                width={3200}
+                height={1080}
+                {...image}
+              />
+            )}
+          </div>
+        )
+      }
     </div>
-  
-    <!-- Image container with reserved header space -->
-    <div class="relative w-full h-[85vh] mx-auto">
-      <!-- Add a container for the header height -->
-      <div class="absolute inset-0 flex flex-col">
-        <div class="h-[76px] w-full"></div> <!-- Reserve space for the header -->
-        <div class="flex-1 relative">
-          {
-            image && (
-              <div class="relative w-full h-full">
-                {typeof image === 'string' ? (
-                  <Fragment set:html={image} />
-                ) : (
-                  <Image
-                    class="absolute inset-0 w-full h-full object-cover"
-                    widths={[2400]}
-                    sizes="100vw"
-                    loading="eager"
-                    width={2400}
-                    height={830}
-                    {...image}
-                  />
-                )}
-              </div>
-            )
-          }
-        </div>
+  </div>
+ 
+  <!-- Actions section - immediately below image -->
+  {actions && (
+    <div class="relative py-8 md:py12 bg-white dark:bg-gray-900 -mt-[2rem] md:-mt-[3rem]">
+      <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        {Array.isArray(actions) ? (
+          actions.map((action) => (
+            <div class="flex w-full sm:w-auto">
+              <Button {...(action || {})} class="w-full sm:mb-0" />
+            </div>
+          ))
+        ) : (
+          <Fragment set:html={actions} />
+        )}
       </div>
     </div>
-    <div class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-      <div class="py-1.5 md:py-3"></div>
-      {actions && (
-        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          {Array.isArray(actions) ? (
-            actions.map((action) => (
-              <div class="flex w-full sm:w-auto">
-                <Button {...(action || {})} class="w-full sm:mb-0" />
-              </div>
-            ))
-          ) : (
-            <Fragment set:html={actions} />
-          )}
-        </div>
-      )}
-    </div>
+  )}
+ 
+  <!-- Content section - below actions -->
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-6 md:py-10">
-      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+    <div class="py-18 md:py-32">
+      <div class="text-center max-w-5xl mx-auto">
         {tagline && (
           <p
-            class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            class="text-sm md:text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
             set:html={tagline}
           />
         )}
         {title && (
           <h1
-            class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
             set:html={title}
           />
         )}
         <div class="max-w-3xl mx-auto">
           {subtitle && (
             <p
-              class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class="text-lg sm:text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={subtitle}
             />
           )}
@@ -99,4 +100,3 @@ const {
     </div>
   </div>
 </section>
-
