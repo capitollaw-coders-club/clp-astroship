@@ -8,7 +8,7 @@ import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 import LangSwitcher from '~/components/common/languageSwitcher.astro';
-import { I18N } from 'astrowind:config'; // Import the I18N configuration from astrowind
+
 
 interface Link {
   text?: string;
@@ -137,16 +137,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showLangSelect && (
               <div class="relative">
-                <LangSwitcher
-                  i18n={{
-                    defaultLanguage: 'en',
-                    languages: {
-                      en: { language: 'English', textDirection: 'ltr' },
-                      tr: { language: 'Türkçe', textDirection: 'ltr' },
-                    },
-                  }}
-                  currentLang="en" // You can dynamically fetch this from localStorage or your config
-                />
+                
               </div>
             )
           }

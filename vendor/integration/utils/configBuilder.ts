@@ -125,32 +125,31 @@ const getMetadata = (config: Config) => {
 };
 
 const getI18N = (config: Config) => {
-  const _default = {
+  const _default: I18NConfig = {
     defaultLanguage: 'en',
     languages: {
       en: {
-        language: 'en',
+        language: 'English',
         textDirection: 'ltr',
+       // dateFormatter: new Intl.DateTimeFormat('en-US'),
       },
-      fr: {
-        language: 'fr',
+      tr: {
+        language: 'Türkçe',
         textDirection: 'ltr',
+        //dateFormatter: new Intl.DateTimeFormat('tr-TR'),
       },
-      ar: {
-        language: 'ar',
-        textDirection: 'rtl',
+      es: {
+        language: 'Español',
+        textDirection: 'ltr',
+        //dateFormatter: new Intl.DateTimeFormat('es-ES'),
       },
     },
   };
 
-  const i18nConfig = merge({}, _default, config?.i18n ?? {}) as I18NConfig;
-
-  return {
-    ...i18nConfig,
-    getLanguageConfig: (lang: string) =>
-      i18nConfig.languages[lang] || i18nConfig.languages[i18nConfig.defaultLanguage],
-  };
+  return merge({}, _default, config?.i18n ?? {}) as I18NConfig;
 };
+
+
 
 const getAppBlog = (config: Config) => {
   const _default = {
