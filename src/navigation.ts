@@ -3,39 +3,54 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'About Us',
-      href: getPermalink('/about-us'),
+      text: 'About us',
+      href: getPermalink('/about'),
     },
     {
       text: 'Practice Areas',
       links: [
         {
           text: 'General Counsel Services',
-          href: getPermalink('/general-counsel-services'),
+          href: getPermalink('/practices/general-counsel-services'),
         },
 
         {
           text: 'Corporate Law',
-          href: getPermalink('/corparate-law'),
+          href: getPermalink('/practices/corporate-law'),
         },
       
         {
           text: 'Business Litigation',
-          href: getPermalink('/business-litigation'),
+          href: getPermalink('/practices/business-litigation'),
         },
         {
           text: 'Business Immigration Law',
-          href: getPermalink('/business-imigration-law'),
+          href: getPermalink('/practices/business-immigration'),
         },
         {
           text: 'Immigration Law',
-          href: getPermalink('/imigration-law'),
+          href: getPermalink('/practices/immigration-law'),
         },
       ]
     },
     {
       text: 'Our Team',
-      href: getPermalink('/team'),
+      links: [
+        {
+          text: 'Cagatay Ersoy',
+          href: getPermalink('/our-team/cagatay'),
+        },
+
+        {
+          text: 'Sena Sahin',
+          href: getPermalink('/our-team/sena'),
+        },
+      
+        {
+          text: 'Shafeek Seddiq',
+          href: getPermalink('/our-team/shafeek'),
+        },
+      ]
     },
     {
       text: 'Our Locations',
@@ -43,7 +58,7 @@ export const headerData = {
     },  
     {
       text: 'Contact Us',
-      href: getPermalink('/locations'),
+      href: getPermalink('/contact'),
     },
   ],
   //actions: [{ text: "Contact Us", href: 'https://github.com/onwidget/astrowind',variant: 'primary', target: '_blank' }],

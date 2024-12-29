@@ -17,9 +17,7 @@ const {
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
-
   id,
-  isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
@@ -41,33 +39,8 @@ const {
     }}
   />
   <div class="mx-auto max-w-7xl p-4 md:px-8">
-    <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
-      <div class="md:basis-1/2 self-center">
-        {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
-
-        {
-          callToAction && (
-            <div class="mt-[-40px] mb-8 text-primary">
-              <Button variant="link" {...callToAction} />
-            </div>
-          )
-        }
-
-        <ItemGrid
-          items={items}
-          columns={columns}
-          defaultIcon="tabler:check"
-          classes={{
-            container: `gap-y-4 md:gap-y-8`,
-            panel: 'max-w-none',
-            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
-            description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2',
-            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
-            action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
-          }}
-        />
-      </div>
-      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
+    <div class={`flex flex-col md:flex ${isReversed ? 'md:flex-row-reverse' : 'md:flex-row'} md:gap-16`}>
+      <div aria-hidden="true" class="mb-10 md:mb-0 md:basis-1/2 order-first md:order-none">
         {
           image && (
             <div class="relative m-auto max-w-4xl">
@@ -87,6 +60,31 @@ const {
             </div>
           )
         }
+      </div>
+      <div class="md:basis-1/2 self-center">
+        {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
+        
+        {
+          callToAction && (
+            <div class="mt-[-40px] mb-8 text-primary">
+              <Button variant="link" {...callToAction} />
+            </div>
+          )
+        }
+        
+        <ItemGrid
+          items={items}
+          columns={columns}
+          defaultIcon="tabler:check"
+          classes={{
+            container: `gap-y-4 md:gap-y-8`,
+            panel: 'max-w-none',
+            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
+            description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2',
+            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
+            action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
+          }}
+        />
       </div>
     </div>
   </div>
